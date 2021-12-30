@@ -12,9 +12,17 @@
 		<td><%= post.caption %></td>
 	</tr>
 	<tr>
+		<% @like = current_user.likes.find_by(post_id: post.id) %>
+		<% if @like.present? %>
+		  <td><%= link_to 'unlike', like_path(id: @like.id), method: :delete %></td>
+		<% else %>
+		  <td><%= link_to 'like', likes_path(post_id: post.id), method: :delete, method: :post %></td>
+		<% end %>
 		<td><%= link_to 'show', post_path(post.id) %></td>
-		<td><%= link_to 'edit', edit_post_path(post.id) %></td>
-		<td><%= link_to 'delete', post_path(post.id), method: :delete, data: {confirm: 'delete this post?'} %></td>
+		<% if post.user_id == current_user.id %>
+		  <td><%= link_to 'edit', edit_post_path(post.id) %></td>
+		  <td><%= link_to 'delete', post_path(post.id), method: :delete, data: {confirm: 'delete this post?'} %></td>
+		<% end %>
 	</tr>
 </table>
 <% end %>

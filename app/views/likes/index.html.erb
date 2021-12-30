@@ -1,6 +1,7 @@
-<h1>show post</h1>
-
-<table>
+<h1>Likes</h1>
+<% @likes.each do |like| %>
+  <% @post = Post.find(like.post_id) %>
+  <table>
 	<tr>
 		<td><%= @post.user.name %></td>
 	</tr>
@@ -11,6 +12,7 @@
 		<td><%= @post.caption %></td>
 	</tr>
 	<tr>
+		<% @like = current_user.likes.find_by(post_id: @post.id) %>
 		<% if @like.present? %>
 		  <td><%= link_to 'unlike', like_path(id: @like.id), method: :delete %></td>
 		<% else %>
@@ -22,4 +24,5 @@
 		  <td><%= link_to 'delete', post_path(@post.id), method: :delete, data: {confirm: 'delete this post?'} %></td>
 		<% end %>
 	</tr>
-</table>
+  </table>
+<% end %>

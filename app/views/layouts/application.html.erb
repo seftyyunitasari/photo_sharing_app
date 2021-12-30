@@ -16,6 +16,9 @@
     <br/>
 
     <% if logged_in? %>
+      <%= link_to "feed", posts_path %>
+      <%= link_to "new post", new_post_path %>
+      <%= link_to "likes", likes_path %>
       <%= link_to "profile", user_path(current_user.id) %>
       <%= link_to "logout", session_path(current_user.id), method: :delete %>
     <% else %>
