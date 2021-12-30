@@ -1,0 +1,10 @@
+<h1>Confirmation Page</h1>
+
+<%= form_with(model: @post, local: true) do |f| %>
+	<%= f.hidden_field :content %>
+	<%= f.hidden_field :caption %>
+	<p>content: <%= @post.content %></p>
+	<p>caption: <%= @post.caption %></p>
+	<%= f.submit 'return', name: 'back' %>
+	<%= f.submit 'post' %>
+<% end %>

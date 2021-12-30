@@ -1,0 +1,21 @@
+<div class="error_explaination">
+	<% if @post.errors.any? %>
+	  <h3><%= pluralize(@post.errors.count, 'error') %>: </h3>
+	  <ul>
+	  	<% @post.errors.full_messages.each.do |msg| %>
+	  	  <li><%= msg %></li>
+	  	<% end %>
+	  </ul>
+</div>
+
+<%= form_with(model: @post, local: true, url: action_url) do |f| %>
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+  <br/>
+  <br/>
+  <%= f.label :caption %>
+  <%= f.text_field :caption %>
+  <br/>
+  <br/>
+  <%= f.submit 'post' %>
+<% end %>
