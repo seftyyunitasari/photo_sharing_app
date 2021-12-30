@@ -2,7 +2,11 @@ class PostsController < ApplicationController
   skip_before_action :login_required, only: [:new, :create, :index, :show]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   def new
-    @post = Post.new
+    if params[:back]
+      @post = Post.new(post_params)
+    else
+      @post = Post.new
+    end
   end
 
   def create
@@ -52,7 +56,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:content, :caption)
+    params.require(:post).permit(:content, :caption, :content_cache)
   end
 
   def set_post

@@ -23,8 +23,6 @@
       <%= link_to "log in", new_session_path %>
     <% end %>
 
-    <%= logged_in? %>
-
     <% flash.each do |key, value| %>
       <%= content_tag(:div, value, class: '#{key}') %>
     <% end %>

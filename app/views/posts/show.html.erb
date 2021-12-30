@@ -2,11 +2,12 @@
 
 <table>
 	<tr>
-		<th>user name</th>
 		<td><%= @post.user.name %></td>
 	</tr>
 	<tr>
-		<td><%= @post.content %></td>
+		<td><%= image_tag @post.content.url %></td>
+	</tr>
+	<tr>
 		<td><%= @post.caption %></td>
 	</tr>
 	<tr>

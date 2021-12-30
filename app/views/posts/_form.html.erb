@@ -10,7 +10,9 @@
 
 <%= form_with(model: @post, local: true, url: action_url) do |f| %>
   <%= f.label :content %>
-  <%= f.text_field :content %>
+  <%= image_tag (@post.content.url) if @post.content && @post.content.url %>
+  <%= f.file_field :content %>
+  <%= f.hidden_field :content_cache %>
   <br/>
   <br/>
   <%= f.label :caption %>
