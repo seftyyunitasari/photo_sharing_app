@@ -9,4 +9,11 @@
 		<td><%= @post.content %></td>
 		<td><%= @post.caption %></td>
 	</tr>
+	<tr>
+		<% if @like.present? %>
+		  <td><%= link_to 'unlike', like_path(id: @like.id), method: :delete %></td>
+		<% else %>
+		  <td><%= link_to 'like', likes_path(post_id: @post.id), method: :delete, method: :post %></td>
+		<% end %>
+	</tr>
 </table>
