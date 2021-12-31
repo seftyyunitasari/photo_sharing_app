@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(user_params)
 		if @user.save
-			redirect_to user_path(@user.id)
+			redirect_to new_session_path
 		else
 			render :new
 		end
@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
+		@avatar = Avatar.find_by(user_id: params[:id])
 	end
 
 	private

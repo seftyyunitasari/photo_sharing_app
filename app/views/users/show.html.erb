@@ -1,3 +1,15 @@
 <h3>Profile</h3>
 <p>Name: <%= @user.name %></p>
 <p>Email: <%= @user.email %></p>
+
+
+
+
+<% if @avatar.present? %>
+  <%= image_tag (@avatar.image.url) if @avatar.image && @avatar.image.url %>
+  <% if @user.id == current_user.id %>
+    <%= link_to 'edit profile picture', edit_avatar_path %>
+  <% end %>
+<% else %>
+  <%= link_to 'add profile picture', new_avatar_path %>
+<% end %>
