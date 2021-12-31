@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  skip_before_action :login_required, only: [:new, :create, :index, :show]
+  skip_before_action :login_required, only: [:new, :create]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   def new
     if params[:back]

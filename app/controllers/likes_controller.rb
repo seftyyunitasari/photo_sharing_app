@@ -1,5 +1,5 @@
 class LikesController < ApplicationController
-	skip_before_action :login_required, only: [:new, :destroy, :index]
+	skip_before_action :login_required, only: [:create, :destroy]
 	def create
 		like = current_user.likes.create(post_id: params[:post_id])
 		redirect_to posts_path

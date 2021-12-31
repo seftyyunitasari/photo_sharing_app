@@ -2,7 +2,7 @@
 
 <table>
 	<tr>
-		<td><%= @post.user.name %></td>
+		<td> <%= link_to @post.user.name, user_path(@post.user.id) %></td>
 	</tr>
 	<tr>
 		<td><%= @post.updated_at %></td>

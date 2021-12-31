@@ -1,4 +1,5 @@
 class AvatarsController < ApplicationController
+  skip_before_action :login_required, only: [:new, :create]
   before_action :set_avatar, only: %i[ show edit destroy ]
 
   # GET /avatars or /avatars.json

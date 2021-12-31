@@ -3,7 +3,7 @@
 <% @post.each do |post| %>
 <table>
 	<tr>
-		<td> uploaded by: <%= post.user.name %></td>
+		<td> <%= link_to post.user.name, user_path(post.user.id) %></td>
 	</tr>
 	<tr>
 		<td><%= post.updated_at.localtime %></td>
