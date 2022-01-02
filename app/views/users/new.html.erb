@@ -1,23 +1,50 @@
-<h1>Create an account</h1>
+<link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
 
 <div class="error_explaination">
-	<% if @user.errors.any? %>
-	  <h3><%= pluralize(@user.errors.count, 'error') %>: </h3>
-	  <ul>
-	  	<% @user.errors.full_messages.each.do |msg| %>
-	  	  <li><%= msg %></li>
-	  	<% end %>
-	  </ul>
+		<% if @user.errors.any? %>
+		<h3><%= pluralize(@user.errors.count, 'error') %>: </h3>
+		<ul>
+			<% @user.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+			<% end %>
+		</ul>
+		<% end %>
 </div>
 
-<%= form_with(model: @user, local: true) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-  <%= f.submit 'create' %>
-<% end %>
+<div class="page">
+
+	<div class="container">
+		<div class="logo">
+			<img src="/images/ig_logo.png">
+		</div>
+
+		<div class="form">
+			<%= form_with(model: @user, local: true) do |f| %>
+			<div class="input">
+				<%= f.text_field :name, placeholder: 'name' %>
+			</div>
+
+			<div class="input">
+				<%= f.email_field :email, placeholder: 'email' %>
+			</div>
+
+			<div class="input">
+				<%= f.password_field :password, placeholder: 'password' %>
+			</div>
+
+			<div class="input">
+				<%= f.password_field :password_confirmation, placeholder: 'password confirmation' %>
+			</div>
+		</div>
+
+		<div class="button">
+			    <%= f.submit "Sign up"%>
+			<% end %>
+		</div>
+
+	</div>
+
+	<div class="container">
+		<p>Already have an account? <%= link_to "Log in", new_session_path %></p>
+	</div>
+</div>

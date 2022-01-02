@@ -1,31 +1,72 @@
-<h1>Feed</h1>
+<link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
+
+              <!-- stories start -->
+              <div class="card">
+                <div class="card-body d-flex justify-content-start">
+                  <ul class="list-inline mb-0">
+                    <li class="list-inline-item">
+                      <button class="btn p-0 m-0">
+                        <div class="d-flex flex-column align-items-center">
+                          <div class="rounded-circle overflow-hidden d-flex justify-content-center align-items-center border border-danger story-profile-photo">
+                            <img src="/images/profile1.png" style="transform: scale(1.5); width: 100%; position: absolute; left: 0;">
+                          </div>
+                          <small>Tabby</small>
+                        </div>
+                      </button>
+                    </li>
+                    <li class="list-inline-item">
+                      <button class="btn p-0 m-0">
+                        <div class="d-flex flex-column align-items-center">
+                          <div class="rounded-circle overflow-hidden d-flex justify-content-center align-items-center border border-danger story-profile-photo">
+                            <img src="/images/profile2.png" style="transform: scale(1.5); width: 100%; position: absolute; left: 0;">
+                          </div>
+                          <small>Ginger</small>
+                        </div>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <!-- stories end -->
 
 <% @post.each do |post| %>
-<table>
-	<tr>
-		<td> <%= link_to post.user.name, user_path(post.user.id) %></td>
-	</tr>
-	<tr>
-		<td><%= post.updated_at.localtime %></td>
-	</tr>
-	<tr>
-		<td><%= image_tag post.content.url %></td>
-	</tr>
-	<tr>
-		<td><%= post.caption %></td>
-	</tr>
-	<tr>
-		<% @like = current_user.likes.find_by(post_id: post.id) %>
-		<% if @like.present? %>
-		  <td><%= link_to 'unlike', like_path(id: @like.id), method: :delete %></td>
-		<% else %>
-		  <td><%= link_to 'like', likes_path(post_id: post.id), method: :delete, method: :post %></td>
-		<% end %>
-		<td><%= link_to 'show', post_path(post.id) %></td>
-		<% if post.user_id == current_user.id %>
-		  <td><%= link_to 'edit', edit_post_path(post.id) %></td>
-		  <td><%= link_to 'delete', post_path(post.id), method: :delete, data: {confirm: 'delete this post?'} %></td>
-		<% end %>
-	</tr>
-</table>
+<div class="post">
+  <div class="post_top">
+    <% if @avatar = Avatar.find_by(user_id: post.user.id) %>
+      <img src="<%= @avatar.image.url %>" class="user_avatar">
+    <% else %>
+      <img src="/images/profile.png" class="user_avatar">
+    <% end %>
+
+  	<div class="post_top_info">
+  		<h3><%= link_to post.user.name, user_path(post.user.id), class: 'link' %></h3>
+  		<p><%= post.updated_at.localtime %></p>
+  	</div>
+  </div>
+
+  <div class="post_image">
+  	<%= image_tag post.content.url, class: 'image' %>
+  </div>
+
+  <div class="post_options">
+  	<% @like = current_user.likes.find_by(post_id: post.id) %>
+  	<% if @like.present? %>
+  	  <%= link_to 'unlike', like_path(id: @like.id), method: :delete, class: 'link' %>
+  	<% else %>
+  	　<%= link_to 'like', likes_path(post_id: post.id), method: :delete, method: :post, class: 'link' %>
+  	<% end %>
+  	<%= link_to 'show', post_path(post.id), class: 'link show' %>
+  	<% if post.user_id == current_user.id %>
+  	　　<%= link_to 'edit', edit_post_path(post.id), class: 'link' %>
+  	　　<%= link_to 'delete', post_path(post.id), method: :delete, data: {confirm: 'delete this post?'}, class: 'link' %>
+  	<% end %>
+  </div>
+
+  <div class="post_bottom">
+  	<p>
+  		<strong><%= post.user.name %></strong> <%= post.caption %>
+  	</p>
+  </div>
+
+</div>
 <% end %>

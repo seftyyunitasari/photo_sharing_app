@@ -1,15 +1,45 @@
-<h3>Profile</h3>
-<p>Name: <%= @user.name %></p>
-<p>Email: <%= @user.email %></p>
-
-
-
+<link rel="stylesheet" type="text/css" href="/stylesheets/profile.css">
 
 <% if @avatar.present? %>
-  <%= image_tag (@avatar.image.url) if @avatar.image && @avatar.image.url %>
-  <% if @user.id == current_user.id %>
-    <%= link_to 'edit profile picture', edit_avatar_path %>
-  <% end %>
+<div class="container">
+  <div class="profile_picture">
+      <%= image_tag (@avatar.image.url) if @avatar.image && @avatar.image.url %>
+  </div>
+
+  <div class="info">
+    <h3>
+      <%= @user.name %>
+    </h3>
+    <p>
+      <%= @user.email %>
+    </p>
+      <% if @user.id == current_user.id %>
+          <%= link_to 'edit profile picture', edit_avatar_path, class: 'link' %>
+      <% end %>
+  </div>
+</div>
+
 <% else %>
-  <%= link_to 'add profile picture', new_avatar_path %>
+<div class="container">
+  <div class="profile_picture">
+      <img src="/images/profile.png">
+  </div>
+
+  <div class="info">
+    <h3>
+      <%= @user.name %>
+    </h3>
+    <p>
+      <%= @user.email %>
+    </p>
+      <% if @user.id == current_user.id %>
+          <%= link_to 'add profile picture', new_avatar_path, class: 'link' %>
+      <% end %>
+  </div>
+</div>
+
 <% end %>
+
+
+
+

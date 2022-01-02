@@ -1,9 +1,27 @@
-<h1>Login</h1>
+<link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
 
-<%= form_with(scope: :session, local: true, url: sessions_path) do |f| %>
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.submit 'log in' %>
-<% end %>
+<div class="page">
+  <div class="container">
+    <div class="logo">
+      <img src="/images/ig_logo.png">
+    </div>
+
+    <div class="form">
+      <%= form_with(scope: :session, local: true, url: sessions_path) do |f| %>
+      <div class="input">
+        <%= f.email_field :email, placeholder: 'email address' %>
+      </div>
+      <div class="input">
+        <%= f.password_field :password, placeholder: 'password' %>
+      </div>
+
+      <div class="button">
+        <%= f.submit "Log in" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <p>Don't have an account? <%= link_to "Sign up", new_user_path %></p>
+  </div>

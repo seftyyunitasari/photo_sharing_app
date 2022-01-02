@@ -1,0 +1,29 @@
+.container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.profile_picture{
+	display: inline-block;
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+.profile_picture img{
+	width: 100%;
+}
+
+.info{
+	margin-left: 30px;
+}
+
+.link{
+	color: black;
+}
+
+.link:hover{
+	color: black;
+}

@@ -6,7 +6,7 @@ class LikesController < ApplicationController
 	end
 	def destroy
 		like = current_user.likes.find_by(id: params[:id]).destroy
-		redirect_to posts_path
+		redirect_to likes_path
 	end
 	def index
 		@likes = current_user.likes

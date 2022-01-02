@@ -16,6 +16,7 @@ class PostsController < ApplicationController
       render :new
     else
       if @post.save
+        PostMailer.post_created(current_user).deliver
         redirect_to post_path(@post.id)
       else
         flash.now[:danger] = 'failed to post'

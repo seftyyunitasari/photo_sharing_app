@@ -1,0 +1,51 @@
+.page{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.container{
+	width: 300px;
+	border-style: solid;
+	border-width: 0.2px;
+	border-color: lightgray;
+	border-radius: 5px;
+	justify-content: center;
+	padding: 20px;
+	margin-bottom: 10px;
+}
+
+.input input{
+	width: 100%;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.button{
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.button input{
+	background-color: #4895ef;
+	width: 100%;
+	color: white;
+	font-size: medium;
+	border-style: none;
+	border-radius: 5px;
+}
+
+p{
+	margin-bottom: 0;
+}
+
+div.logo{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.logo img{
+	height: 50px;
+}
