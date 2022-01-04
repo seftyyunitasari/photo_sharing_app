@@ -35,6 +35,8 @@
       <%= @user.email %>
     </p>
       <% if @user.id == current_user.id %>
+          <%= link_to 'edit profile', edit_user_path(@user.id), class: 'link' %>
+          <br/>
           <%= link_to 'add profile picture', new_avatar_path, class: 'link' %>
       <% end %>
   </div>
