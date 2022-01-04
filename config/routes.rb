@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :avatars
   root 'users#new'
-  resources :users, only: [:new, :create, :show]
+  resources :users, only: [:new, :create, :show, :edit, :update]
   resources :sessions, only: [:new, :create, :destroy]
   resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
     collection do

@@ -1,0 +1,78 @@
+<link rel="stylesheet" type="text/css" href="/stylesheets/profile.css">
+
+
+<% if @avatar.present? %>
+<div class="container">
+  <div class="profile_picture">
+    <%= image_tag (@avatar.image.url) if @avatar.image && @avatar.image.url %>
+  </div>
+
+  <div class="info">
+    <div class="form">
+      <%= form_with(model: @user, local: true) do |f| %>
+      <div class="input">
+        <%= f.label :User_name %>
+        <%= f.text_field :name %>
+      </div>
+
+      <div class="input">
+        <%= f.label :Email %>
+        <%= f.email_field :email %>
+      </div>
+
+      <div class="input">
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+      </div>
+
+      <div class="input">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation %>
+      </div>
+
+      <div class="button">
+        <%= f.submit "edit profile"%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <% else %>
+  <div class="container">
+    <div class="profile_picture">
+      <img src="/images/profile.png">
+    </div>
+
+    <div class="info">
+      <div class="form">
+        <%= form_with(model: @user, local: true) do |f| %>
+        <div class="input">
+          <%= f.label :User_name %>
+          <%= f.text_field :name %>
+        </div>
+
+        <div class="input">
+          <%= f.label :Email %>
+          <%= f.email_field :email %>
+        </div>
+
+        <div class="input">
+          <%= f.password_field :password %>
+        </div>
+
+        <div class="input">
+          <%= f.password_field :password_confirmation %>
+        </div>
+
+        <div class="button">
+          <%= f.submit "edit profile"%>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% end %>
+
+
+
