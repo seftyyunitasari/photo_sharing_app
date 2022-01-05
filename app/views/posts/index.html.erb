@@ -63,9 +63,11 @@
   </div>
 
   <div class="post_bottom">
-  	<p>
-  		<strong><%= post.user.name %></strong> <%= post.caption %>
-  	</p>
+    <strong><%= post.user.name %></strong>
+    <% if post.caption.empty? %>
+    <% else %>
+      <p><%= post.caption %></p>
+    <% end %>
   </div>
 
 </div>
